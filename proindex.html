@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="utf-8" />
+        <title>Pro Index</title>
+        <script src="js/idbstore.js"></script>
+        <script src="js/proindex.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/dust.js"></script>
+        <script src="http://maps.google.com/maps/api/js?key=AIzaSyATLXDRMmvPHtURmWfVTltBGpv-bMTveUo"></script>
+        <script src="js/gmaps.js"></script>
+        <script src="js/dustjs-helpers.js"></script>
+        <link href="css/proindex.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+
+
+    <!-- ************************************************************************************************************************************MUENU of Page********************************************************************************************************************************************************* -->
+
+
+        <table>
+            <tr>
+                <div class="container" id="main" role="main">
+                    <ul class="menu">
+                        <li><a onclick="home()">Home</a></li>
+                        <li><a onclick="menu1()">Menu 1</a></li>
+                        <li><a onclick="menu2()">Menu 2</a></li>
+                        <li><a onclick="menu3()">Menu 3</a></li>
+                        <li><a onclick="menu4()">Menu 4</a></li>
+                        <li><a onclick="add()">Add/Delete</a></li>
+                        <li><a onclick="contact()">Contact</a></li>
+                        <li><a onclick="addNews()">News</a></li>
+
+                    </ul>
+                </div>
+            </tr>
+            <tr>
+                <div id="display">a</div>
+                <div id="display1">b</div>
+                <div id="newsDiv">News Some random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random textSome random text</div>
+                <div id="map" style="width:100%;height:500px">c</div>
+               
+            </tr>
+        </table>
+        
+
+        <!-- ************************************************************************************************************************************Content of Page is Displayed Here********************************************************************************************************************************************************* -->
+        
+        
+
+
+        <!-- **************************************************************************************************************************************Dust.JS********************************************************************************************************************************************************************************* -->
+      
+
+        <script type="text/dust" id="dustTemplate1">Dust Template1 <br><h1>{homeData1}<br> {homeData2}<br>{homeData3}</h1></script>
+        <script type="text/dust" id="dustTemplate2">Dust Template2 {~n}<h1> {homeData1}{~n}  {homeData2}{~n}</h1> </script>
+        <script type="text/dust" id="dustTemplate3">Dust Template3 {~n}<h1> {homeData1}{~n}  {homeData2}{~n}</h1> </script>
+        <script type="text/dust" id="dustTemplate4">Dust Template4 {~n} <h1>{homeData1} {~n} {homeData2}{~n}</h1> </script>
+        <script type="text/dust" id="dustTemplate5">Dust Template5 {~n} <h1>{homeData1}<br> {~n} {homeData2}{~n} <br>
+        {homeData3}<br> {~n} {homeData4}{~n} <br>{homeData5}<br> {~n} {homeData6}{~n} <br>{homeData7}<br> {~n} {homeData8}{~n} <br>{homeData9}<br> {~n} {homeData10}{~n} <br>{homeData11}<br> {~n} {homeData12}{~n} <br>{homeData13}<br> {~n}
+        </h1></script>
+        <script type="text/dust" id="dustTemplate6">Dust Template6 {~n} <h1>{homeData1} {~n} {homeData2}{~n}</h1> </script>
+    </body>
+</html>
