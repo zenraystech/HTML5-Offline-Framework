@@ -353,3 +353,25 @@ function addNews() {
         store25.put(dataToAdd);       //adding Data object ObjectStore--
     });
 }
+
+
+
+function adddeleteupdate() {
+    $("#result1").html("<input type=\"text\" name=\"content\" id=\"head\" placeholder=\"Enter content\"><input type=\"url\" placeholder=\"Enter URL\" name=\"url\" id=\"url\"><button id=\"but3\" >Add</button><br><br>");
+    $("#result2").html("<input type=\"text\" placeholder=\"id\" name=\"id\" id=\"id4\"><button id=\"but4\" >Delete</button>");
+
+    $("#but3").click(function(){
+        var data = {
+            head: $("#head").val(),
+            url: $("#url").val()
+        }
+        store1.put(data);
+        alert("added");
+    })
+    
+    $("#but4").click(function(){
+        var removeId = Number($("#id4").val());
+        store1.remove(removeId);
+        alert("deleted");
+    });
+}
