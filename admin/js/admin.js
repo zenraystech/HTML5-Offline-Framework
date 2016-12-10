@@ -15,21 +15,25 @@ var compiled, i1 = 1, i2 = 2, i3 = 3, i4 = 4, i5 = 5, a, r, rawText;
 ////////////////////////////////////////////////Object Store Creation/////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Creating Database objectstore
-var store20 = new IDBStore({      //Creating Instance of the Objectstore
+//Creating Instance of the Objectstore
+var store20 = new IDBStore({      
     dbVersion: 1,
     storeName: "store20",
-    keyPath: "ID",                       //Keypath OR the Primary key for Objectstore
-    autoIncrement: true,                 //For Auto incrementing Keypath
+    //Keypath OR the Primary key for Objectstore
+    keyPath: "ID",  
+    //For Auto incrementing Keypath                     
+    autoIncrement: true,                 
     onStoreReady: function () {
-        console.log("Store20 ready!");     //If everything goes perfect Display "store is ready"
+        //If everything goes perfect Display "store is ready"
+        console.log("Store20 ready!");     
     },
+    // Indexing key, other than keypath to using in query
     indexes: [{
         name: "info",
         keyPath: "info",
         unique: false,
         multiEntry: false
-    }]     // Indexing key, other than keypath to using in query
-
+    }]     
 });
 //Another Objectstore
 var store21 = new IDBStore({
@@ -41,8 +45,11 @@ var store21 = new IDBStore({
           console.log("Store21 ready!");
       },
       indexes: [{
-          name: "info", keyPath: "info", unique: false, multiEntry: false }
-      ]
+          name: "info",
+          keyPath: "info",
+          unique: false,
+          multiEntry: false
+      }]
 });
 //Another Objectstore
 var store22 = new IDBStore({
@@ -53,9 +60,12 @@ var store22 = new IDBStore({
     onStoreReady: function () {
         console.log("Store22 ready!");
     }, 
-    indexes: [
-        { name: "info", keyPath: "info", unique: false, multiEntry: false }
-    ]
+    indexes: [{
+        name: "info",
+        keyPath: "info",
+        unique: false,
+        multiEntry: false
+    }]
 });
 //Another Objectstore
 var store23 = new IDBStore({
@@ -66,9 +76,12 @@ var store23 = new IDBStore({
     onStoreReady: function () {
         console.log("Store23 ready!");
     },
-    indexes: [
-        { name: "info", keyPath: "info", unique: false, multiEntry: false }
-    ]
+    indexes: [{
+        name: "info",
+        keyPath: "info",
+        unique: false,
+        multiEntry: false
+    }]
 });
 //Another Objectstore
 var store24 = new IDBStore({
@@ -79,9 +92,12 @@ var store24 = new IDBStore({
     onStoreReady: function () {
       console.log("Store24 ready!");
     },
-    indexes: [
-        { name: "info", keyPath: "info", unique: false, multiEntry: false }
-    ]
+    indexes: [{
+        name: "info",
+        keyPath: "info",
+        unique: false,
+        multiEntry: false
+    }]
 });
 //Another Objectstore
 var store25 = new IDBStore({
@@ -92,25 +108,33 @@ var store25 = new IDBStore({
     onStoreReady: function () {
         console.log("Store25 ready!");
     },
-    indexes: [
-       { name: "info", keyPath: "info", unique: false, multiEntry: false }
-  ]
-});
-
-var store26 = new IDBStore({      //Creating Instance of the Objectstore
-    dbVersion: 1,
-    storeName: "store26",    
-    keyPath: "ID",                       //Keypath OR the Primary key for Objectstore
-    autoIncrement: true,                 //For Auto incrementing Keypath
-    onStoreReady: function () {
-        console.log("Store26 ready!");        //If everything goes perfect Display "store is ready"
-    },
     indexes: [{
         name: "info",
         keyPath: "info",
         unique: false,
         multiEntry: false
-    }]     // Indexing key, other than keypath to using in query
+    }]
+});
+
+//Creating Instance of the Objectstore
+var store26 = new IDBStore({      
+    dbVersion: 1,
+    storeName: "store26", 
+    //Keypath OR the Primary key for Objectstore   
+    keyPath: "ID",  
+    //For Auto incrementing Keypath
+    autoIncrement: true,                 
+    onStoreReady: function () {
+        //If everything goes perfect Display "store is ready"
+        console.log("Store26 ready!");        
+    },
+    // Indexing key, other than keypath to using in query
+    indexes: [{
+        name: "info",
+        keyPath: "info",
+        unique: false,
+        multiEntry: false
+    }]     
 
 });
 
@@ -144,9 +168,12 @@ function render() {
 var onsuccess = function (data) {
     var i = "1";
     dataToRender = {};
-    data.forEach(function (item) {                         //Iterate over the Object store
-        dataToRender["homeData" + i] = item.info;     //giving back the dust template with values from IDB
-        i = Number(i) + 1;                          //Incrementing ID value to Iterate over the Object store
+    //Iterate over the Object store
+    data.forEach(function (item) {    
+        //giving back the dust template with values from IDB                     
+        dataToRender["homeData" + i] = item.info;
+        //Incrementing ID value to Iterate over the Object store     
+        i = Number(i) + 1;                          
         i = String(i);
     });
     render();
@@ -185,8 +212,8 @@ var success =function (data) {
          $("#newsDiv").append("<br>"+event.info+" <br>");
     });
 };
-//Extracting data from IDBstore for "home" menu
 
+//Extracting data from IDBstore for "home" menu
 $().ready(function(){
     $("#home").on("click", function() {
         rawText = $("#dustTemplate1").text();           //collecting raw data from dust template
@@ -197,7 +224,7 @@ $().ready(function(){
         store25.getAll(success);
     });
 
-//Extracting data from IDBstore for "menu1" menu
+    //Extracting data from IDBstore for "menu1" menu
     $("#firstMenu").on("click", function() {
         rawText = $("#dustTemplate2").text();
         compiled = dust.compile(rawText,"dust1");
@@ -206,8 +233,7 @@ $().ready(function(){
         dataToRender = getData(i1);
     });
 
-
-//Extracting data from IDBstore for "menu2" menu
+    //Extracting data from IDBstore for "menu2" menu
     $("#secondMenu").on("click", function() {
         rawText = $("#dustTemplate3").text();
         compiled = dust.compile(rawText,"dust2");
@@ -217,7 +243,7 @@ $().ready(function(){
         dataToRender = getData(i1);  
     });
 
-//Extracting data from IDBstore for "menu3" menu
+    //Extracting data from IDBstore for "menu3" menu
     $("#thirdMenu").on("click", function() {
         rawText = $("#dustTemplate4").text();
         compiled = dust.compile(rawText,"dust3");
@@ -226,7 +252,7 @@ $().ready(function(){
         dataToRender = getData(i1);   
     });
 
-//Extracting data from IDBstore for "menu4" menu
+    //Extracting data from IDBstore for "menu4" menu
     $("#fourthMenu").on("click", function() {
         rawText = $("#dustTemplate5").text();
         compiled = dust.compile(rawText,"dust4");
@@ -287,9 +313,9 @@ function add() {
 
     $("#buttonSecond").click(function(){
         deleteId = $("#id2").val();
-        //deleteId = Number(deleteId);
         if(Number($("#storeNumber1").val()) == 1) {
-            store20.remove(deleteId);              //removing Object from Objectstore corresponding to "deleteID"
+            //removing Object from Objectstore corresponding to "deleteID"
+            store20.remove(deleteId);              
         }
         if(Number($("#storeNumber1").val()) == 2) {
             store21.remove(deleteId);
@@ -318,30 +344,38 @@ function add() {
     $("#display1").html("<div class=\"responsive\"><div class=\"img\"> <a target=\"_blank\" href=\"images/download.jpg\"><img src=\"images/download.jpg\" alt=\"Trolltunga Norway\" width=\"300\" height=\"200\"></a><div class=\"desc\">Add a description of the image here</div></div></div><div class=\"responsive\"><div class=\"img\"><a target=\"_blank\" href=\"images/download(1).jpg\"><img src=\"images/download(1).jpg\" alt=\"Forest\" width=\"600\" height=\"400\"></a><div class=\"desc\">Add a description of the image here</div></div></div><div class=\"responsive\"><div class=\"img\"><a target=\"_blank\" href=\"images/download(2).jpg\"><img src=\"images/download(2).jpg\" alt=\"Northern Lights\" width=\"600\" height=\"400\"></a><div class=\"desc\">Add a description of the image here</div></div></div><div class=\"responsive\"><div class=\"img\"><a target=\"_blank\" href=\"images/download(3).jpg\"><img src=\"images/download(3).jpg\" alt=\"Mountains\" width=\"600\" height=\"400\"></a><div class=\"desc\">Add a description of the image here</div></div></div>");
 }
 */
+
+
 //Do display the Contact Information in Google Map
 function contact() {
-    $("#outerDisplay").html("");   //Clearing the Home Page
-    var zen = {lat: 12.931611, lng: 77.628411};         //Coordinates of the Zenrays in Google map
+    //Clearing the Home Page
+    $("#outerDisplay").html("");
+    //Coordinates of the Zenrays in Google map
+    var zen = {lat: 12.931611, lng: 77.628411}; 
     var map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 20,              // Amount of Zoom
-        center: zen            //Centre to be Pointed
+        // Amount of Zoom
+        zoom: 20,              
+        //Centre to be Pointed
+        center: zen            
     });
-        //Content displayed on the Pointed Location
+    
+    //Content displayed on the Pointed Location
     var contentString = "<h1>Zenrays Technologies </h1><br>456, 8th Main Rd, Koramangala 4th Block, Koramangala, Bengaluru, Karnataka 560034 <br><a href=\"http://zenrays.com/\">zenrays.com</a> <br>099164 82106 <br>Open now:  9AM-9PM ";
 
-        //Displaying content
+    //Displaying content
     var infowindow = new google.maps.InfoWindow({
         content: contentString,
         maxWidth: 200
     });
 
-        //Marking the Location
+    //Marking the Location
     var marker = new google.maps.Marker({
         position: zen,
         map: map,
         title: "Zenrays"
     });
-    marker.addListener("click", function() {          //To display information Window
+    //To display information Window
+    marker.addListener("click", function() {          
         infowindow.open(map, marker);
     });
 }
@@ -349,15 +383,20 @@ function contact() {
 
 //Adding recent News To Database (IDB)
 function addNews() {
-    $("#outerDisplay").html("");           //Clearing the Home Page
+    //Clearing the Home Page
+    $("#outerDisplay").html("");
     //Displaying input form
     $("#display2").html("<form><label>Enter News</label><br><br><br><input type=\"text\" name=\"news\" width=\"500px\" id=\"newsInput\"><br><br><button id=\"news\" >Submit</button></form>");
-    $("#news").click(function(){      //After Clicking the Button
-        var g = $("#newsInput").val();     //input Data(Recent News)
-        var dataToAdd = {             //Creating data Object
+    //After Clicking the Button
+    $("#news").click(function(){      
+        //input Data(Recent News)
+        var g = $("#newsInput").val();
+        //Creating data Object
+        var dataToAdd = {    
               info: g
         };
-        store25.put(dataToAdd);       //adding Data object ObjectStore--
+        //adding Data object ObjectStore
+        store25.put(dataToAdd);       
     });
 }
 
