@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="proindex.appcache">
+<html >                               <!-- manifest="proindex.appcache" -->
     <head>
         <meta charset="utf-8" />
         <title>Pro Index</title>
@@ -17,27 +17,30 @@
     <!-- ************************************************************************************************************************************MUENU of Page********************************************************************************************************************************************************* -->
 
 
-        <table>
-            <tr>
+        <table id="table">
+            <tr id="tr">
                 <div class="container" id="main" role="main">
                     <ul class="menu">                              <!--  Menu Items List -->
-                        <li><a onclick="home()">Home</a></li>
-                        <li><a onclick="menu1()">Menu 1</a></li>
-                        <li><a onclick="menu2()">Menu 2</a></li>
-                        <li><a onclick="menu3()">Menu 3</a></li>
-                        <li><a onclick="menu4()">Menu 4</a></li>
-                        <li><a onclick="">Menu 5</a></li>
-                        <li><a onclick="">Menu 6</a></li>
-                        <li><a onclick="">Menu 7</a></li>
+                        <li><a id="home">Home</a></li>
+                        <li><a id="firstMenu" >Menu 1</a></li>
+                        <li><a id="secondMenu" >Menu 2</a></li>
+                        <li><a id="thirdMenu" >Menu 3</a></li>
+                        <li><a id="fourthMenu" >Menu 4</a></li>
+
+                        
 
                     </ul>
                 </div>
             </tr>
             <tr>
-                <div id="display"></div>            <!-- Displaying the Content  -->
-                <div id="display1"></div>
-                <div id="newsDiv"></div>
-                <div id="map" style="width:100%;height:500px"></div>                <!-- Displaying Map -->
+                <div id="outerDisplay">
+                    <div id="display"></div>            <!-- Displaying the Content  -->
+                    <div id="display1"></div>
+                    <div id="newsDiv"></div>
+                    <div id="map" style="width:100%;height:500px"></div> 
+                    
+                </div>
+                               <!-- Displaying Map -->
                
             </tr>
         </table>

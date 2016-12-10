@@ -1,14 +1,8 @@
 "use strict";
 var dataToRender = {};
-var rawText;
-var a;
-var r;
-var compiled;
-var i1 = 1;
-var i2 = 2;
-var i3 = 3;
-var i4 = 4;
-var i5 = 5;
+var compiled, i1 = 1, i2 = 2, i3 = 3, i4 = 4, i5 = 5, a, r, rawText;
+
+
 //jQuery selecters are used with spesific id selecting which is the fastest compare to  selecting  class and tag
 //so selecting the item is done using id in following code
 
@@ -192,48 +186,56 @@ var success =function (data) {
     });
 };
 //Extracting data from IDBstore for "home" menu
-function home() {
-    rawText = $("#dustTemplate1").text();           //collecting raw data from dust template
-    compiled = dust.compile(rawText,"dust");          //compiling raw data and giving name "dust"
-    dust.loadSource(compiled);                    //loadind the compiled data "compiled"
-    i1 = 1;
-    getData(i1);
-    store25.getAll(success);
-}
+
+$().ready(function(){
+    $("#home").on("click", function() {
+        rawText = $("#dustTemplate1").text();           //collecting raw data from dust template
+        compiled = dust.compile(rawText,"dust");          //compiling raw data and giving name "dust"
+        dust.loadSource(compiled);                    //loadind the compiled data "compiled"
+        i1 = 1;
+        getData(i1);
+        store25.getAll(success);
+    });
+
 //Extracting data from IDBstore for "menu1" menu
-function menu1() {
-    rawText = $("#dustTemplate2").text();
-    compiled = dust.compile(rawText,"dust1");
-    dust.loadSource(compiled);
-    i1 = 2;
-    dataToRender = getData(i1);
-}
+    $("#firstMenu").on("click", function() {
+        rawText = $("#dustTemplate2").text();
+        compiled = dust.compile(rawText,"dust1");
+        dust.loadSource(compiled);
+        i1 = 2;
+        dataToRender = getData(i1);
+    });
+
+
 //Extracting data from IDBstore for "menu2" menu
-function menu2() {
-    rawText = $("#dustTemplate3").text();
-    compiled = dust.compile(rawText,"dust2");
-    dust.loadSource(compiled);
-    i1 = 3;
-    i2 = "dust2" ;
-    dataToRender = getData(i1);
-}
+    $("#secondMenu").on("click", function() {
+        rawText = $("#dustTemplate3").text();
+        compiled = dust.compile(rawText,"dust2");
+        dust.loadSource(compiled);
+        i1 = 3;
+        i2 = "dust2" ;
+        dataToRender = getData(i1);  
+    });
 
 //Extracting data from IDBstore for "menu3" menu
-function menu3(){
-    rawText = $("#dustTemplate4").text();
-    compiled = dust.compile(rawText,"dust3");
-    dust.loadSource(compiled);
-    i1 = 4;
-    dataToRender = getData(i1);
-}
+    $("#thirdMenu").on("click", function() {
+        rawText = $("#dustTemplate4").text();
+        compiled = dust.compile(rawText,"dust3");
+        dust.loadSource(compiled);
+        i1 = 4;
+        dataToRender = getData(i1);   
+    });
+
 //Extracting data from IDBstore for "menu4" menu
-function menu4() {
-    rawText = $("#dustTemplate5").text();
-    compiled = dust.compile(rawText,"dust4");
-    dust.loadSource(compiled);
-    i1 = 5;
-    dataToRender = getData(i1);
-}
+    $("#fourthMenu").on("click", function() {
+        rawText = $("#dustTemplate5").text();
+        compiled = dust.compile(rawText,"dust4");
+        dust.loadSource(compiled);
+        i1 = 5;
+        dataToRender = getData(i1);   
+    });    
+});
+
 
 
 
@@ -243,29 +245,17 @@ function menu4() {
 /**************************************************************************************************************************
 *********************************IDBWrapper************************************************************************************
 *****************************************************************************************************************************/
-
-var success111 = function () {       //success funtion for adding data
-    alert("added");
-};
-var error111 = function () {        //error function for adding data
-    alert("error");
-};
-
-var addId;
-var deleteId;
+var addId, deleteId;
 
 
 //function for adding data to Obectstore
 function add() {
-    $("#map").html("");             //Clearing Current content
-    $("#newsDiv").html("");         //Clearing Current content
-    $("#display1").html("");           //Clearing the Home Page
-    $("#display2").html("");           //Clearing the Home Page
+    $("#outerDisplay").html("");           //Clearing the Home Page
 //displaying Input forms for add and Delete
-    $("#display").html("<form><br><label>Enter Store Number</label><input  type=\"text\" name=\"storeNumber\" id=\"storeNumber\"><label>Enter ID</label><input type=\"text\"  name=\"id\" id=\"id1\"><label>Enter Content</label><input type=\"text\" name=\"content\" id=\"content1\" ><button id=\"but1\" >Add</button><br><br></form>")
-    $("#display").append("<br><label>Enter Store Number</label><input  type=\"text\" name=\"storeNumber\" id=\"storeNumber1\"><label>Enret ID</label><input type=\"text\"  name=\"id\" id=\"id2\"><button id=\"but2\" >Delete</button>")
+    $("#display").html("<form><br><label>Enter Store Number</label><input  type=\"text\" name=\"storeNumber\" id=\"storeNumber\"><label>Enter ID</label><input type=\"text\"  name=\"id\" id=\"id1\"><label>Enter Content</label><input type=\"text\" name=\"content\" id=\"content1\" ><button id=\"buttonFirst\" >Add</button><br><br></form>")
+    $("#display").append("<br><label>Enter Store Number</label><input  type=\"text\" name=\"storeNumber\" id=\"storeNumber1\"><label>Enret ID</label><input type=\"text\"  name=\"id\" id=\"id2\"><button id=\"buttonSecond\" >Delete</button>")
 
-    $("#but1").click(function () {          // onclick of add button
+    $("#buttonFirst").click(function () {          // onclick of add button
         addId = $("#id1").val();            //ID of Object to be added
         var i = $("#content1").val();       //Content to be added to Objectstore
         var data = {                        // Object to add
@@ -274,28 +264,28 @@ function add() {
         };
         //Checking for  Which ObjectStore should be  selected
         if(Number($("#storeNumber").val())==1){
-            store20.put(data,success111, error111);    //  Addind object to the  ObjectStore
+            store20.put(data);    //  Addind object to the  ObjectStore
         }
         //Checking for  Which ObjectStore should be  selected
         if(Number($("#storeNumber").val())==2){
-            store21.put(data, success111, error111);   //  Addind object to the  ObjectStore
+            store21.put(data);   //  Addind object to the  ObjectStore
         }
         //Checking for  Which ObjectStore should be  selected
         if(Number($("#storeNumber").val())==3){
-            store22.put(data, success111, error111);   //  Addind object to the  ObjectStore
+            store22.put(data);   //  Addind object to the  ObjectStore
         }
         //Checking for  Which ObjectStore should be  selected
         if(Number($("#storeNumber").val())==4){
-            store23.put(data, success111, error111);    //  Addind object to the  ObjectStore
+            store23.put(data);    //  Addind object to the  ObjectStore
         }
         //Checking for  Which ObjectStore should be  selected
         if(Number($("#storeNumber").val())==5){
-            store24.put(data, success111, error111);     //  Addind object to the  ObjectStore
+            store24.put(data);     //  Addind object to the  ObjectStore
         }
     });
 
 
-    $("#but2").click(function(){
+    $("#buttonSecond").click(function(){
         deleteId = $("#id2").val();
         //deleteId = Number(deleteId);
         if(Number($("#storeNumber1").val()) == 1) {
@@ -312,8 +302,7 @@ function add() {
         }
         if(Number($("#storeNumber1").val()) == 5) {
             store24.remove(deleteId);
-    }
-    alert("deleted");
+        }
     });
 }
 
@@ -331,9 +320,7 @@ function add() {
 */
 //Do display the Contact Information in Google Map
 function contact() {
-    $("#display1").html("");   //Clearing the Home Page
-    $("#display").html("");    //Clearing the Home Page
-    $("#newsDiv").html("");    //Clearing the Home Page
+    $("#outerDisplay").html("");   //Clearing the Home Page
     var zen = {lat: 12.931611, lng: 77.628411};         //Coordinates of the Zenrays in Google map
     var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 20,              // Amount of Zoom
@@ -362,11 +349,7 @@ function contact() {
 
 //Adding recent News To Database (IDB)
 function addNews() {
-    $("#display1").html("");           //Clearing the Home Page
-    $("#display").html("");           //Clearing the Home Page
-    $("#newsDiv").html("");           //Clearing the Home Page
-    $("#map").html("");               //Clearing the Home Page
-    $("#newsDiv").html("");           //Clearing the Home Page
+    $("#outerDisplay").html("");           //Clearing the Home Page
     //Displaying input form
     $("#display2").html("<form><label>Enter News</label><br><br><br><input type=\"text\" name=\"news\" width=\"500px\" id=\"newsInput\"><br><br><button id=\"news\" >Submit</button></form>");
     $("#news").click(function(){      //After Clicking the Button
@@ -381,9 +364,7 @@ function addNews() {
 
 
 function adddeleteupdate() {
-    $("#newsDiv").html("");
-    $("#display").html("");
-    $("#display2").html("");
+    $("#outerDisplay").html("");
     $("#display1").html("<br><h6>width: 20% by default, It Should be adjusted by the User, depending on the number of menu items in CSS file line number 35</h6><br");
     $("#display1").append("<input type=\"text\" name=\"content\" id=\"head\" placeholder=\"Enter content\"><input type=\"url\" placeholder=\"Enter URL\" name=\"url\" id=\"url\"><button id=\"but3\" >Add</button><br><br>");
     $("#display1").append("<input type=\"text\" placeholder=\"id\" name=\"id\" id=\"id4\"><button id=\"but4\" >Delete</button>");
@@ -393,12 +374,33 @@ function adddeleteupdate() {
             url: $("#url").val()
         };
         store1.put(data);
-        alert("head added");
     });
     
     $("#but4").click(function(){
         var removeId = Number($("#id4").val());
-        store26.remove(removeId);
-        alert("head deleted");
     });
 }
+
+
+
+
+function success2(result) {
+    $(".menu").html("");
+    result.forEach(function(item){
+        $(".menu").append("<th><h2><a " + "href= "+"\""+item.url+"\"" +"\""+">"+ item.head+"<a></h2></th>");
+    });
+}
+
+function error2() {
+        alert("error");
+}
+            
+window.onload = function () {
+    store26.getAll(success2, error2);
+};
+
+
+
+
+
+
